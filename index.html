@@ -8,17 +8,49 @@
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #f6f7f9; /* 匹配学信网背景底色 */
+            background-color: #f6f7f9;
             width: 100%;
         }
-        .full-image {
+
+        /* 固定在顶部的容器 */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            display: block; /* 消除图片底部间隙 */
+            z-index: 999; /* 确保它在最上层 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 可选：给菜单栏加一点阴影增加立体感 */
+        }
+
+        .fixed-header img {
+            width: 100%;
+            display: block;
+        }
+
+        /* 下方滚动的长图容器 */
+        .scroll-content {
+            width: 100%;
+            /* 这里的 padding-top 非常重要！
+               它的值应该是你顶部菜单栏图片在手机屏幕上显示的高度。
+               如果菜单栏被遮挡了，请适当增加这个像素值。 */
+            padding-top: 50px; 
+        }
+
+        .scroll-content img {
+            width: 100%;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <img src="bg.jpg" alt="学信档案" class="full-image">
-</body>
 
+    <div class="fixed-header">
+        <img src="top_bar.jpg" alt="Header">
+    </div>
+
+    <div class="scroll-content">
+        <img src="content.jpg" alt="Content">
+    </div>
+
+</body>
 </html>
